@@ -325,18 +325,18 @@
       document.getElementById('userAvatar').style.backgroundImage = `url('${currentUser.photo}')`;
 
       const giftsData = [
-        { name: 'Xmas Stockings', price: 3.47, img: 'https://cache.tonkeeper.com/nft/500/A31f471b0b7549646be1fa8c0fcf32b90b1c20e2e9c20a8c2f01.png' },
-        { name: 'Snake Boxes', price: 3.47, img: 'https://cache.tonkeeper.com/nft/500/B42f471b0b7549646be1fa8c0fcf32b90b1c20e2e9c20a8c2f01.png' },
-        { name: 'Lunar Snakes', price: 3.49, img: 'https://cache.tonkeeper.com/nft/500/C53f471b0b7549646be1fa8c0fcf32b90b1c20e2e9c20a8c2f01.png' },
-        { name: 'Instant Ramens', price: 3.50, img: 'https://nft.fragment.com/_next/static/media/gift-instant-ramens.9e32014b.png' },
-        { name: 'Lol Pops', price: 3.52, img: 'https://nft.fragment.com/_next/static/media/gift-lol-pops.7289fa31.png' },
-        { name: 'Jester Hats', price: 3.52, img: 'https://nft.fragment.com/_next/static/media/gift-jester-hats.31c9a60e.png' },
-        { name: 'Chill Flame', price: 3.56, img: 'https://nft.fragment.com/_next/static/media/gift-chill-flame.109a2e6f.png' },
-        { name: 'Ice Creams', price: 3.61, img: 'https://nft.fragment.com/_next/static/media/gift-ice-creams.4019a82b.png' },
-        { name: 'Ginger Cookies', price: 3.63, img: 'https://nft.fragment.com/_next/static/media/gift-ginger-cookies.8b12201d.png' },
-        { name: 'Homemade Cakes', price: 4.21, img: 'https://nft.fragment.com/_next/static/media/gift-homemade-cakes.514bc213.png' },
-        { name: 'Stellar Rockets', price: 4.33, img: 'https://nft.fragment.com/_next/static/media/gift-stellar-rockets.78bc12ea.png' },
-        { name: 'Victory Medal', price: 4.35, img: 'https://nft.fragment.com/_next/static/media/gift-victory-medal.91cb883e.png' }
+        { name: 'Xmas Stockings', price: 3.47, img: 'https://cdn-icons-png.flaticon.com/512/3137/3137515.png' },
+        { name: 'Snake Boxes', price: 3.47, img: 'https://cdn-icons-png.flaticon.com/512/2910/2910791.png' },
+        { name: 'Lunar Snakes', price: 3.49, img: 'https://cdn-icons-png.flaticon.com/512/616/616408.png' },
+        { name: 'Instant Ramens', price: 3.50, img: 'https://cdn-icons-png.flaticon.com/512/3174/3174883.png' },
+        { name: 'Lol Pops', price: 3.52, img: 'https://cdn-icons-png.flaticon.com/512/3081/3081986.png' },
+        { name: 'Jester Hats', price: 3.52, img: 'https://cdn-icons-png.flaticon.com/512/3198/3198595.png' },
+        { name: 'Chill Flame', price: 3.56, img: 'https://cdn-icons-png.flaticon.com/512/785/785116.png' },
+        { name: 'Ice Creams', price: 3.61, img: 'https://cdn-icons-png.flaticon.com/512/938/938067.png' },
+        { name: 'Ginger Cookies', price: 3.63, img: 'https://cdn-icons-png.flaticon.com/512/1046/1046784.png' },
+        { name: 'Homemade Cakes', price: 4.21, img: 'https://cdn-icons-png.flaticon.com/512/3137/3137492.png' },
+        { name: 'Stellar Rockets', price: 4.33, img: 'https://cdn-icons-png.flaticon.com/512/1356/1356479.png' },
+        { name: 'Victory Medal', price: 4.35, img: 'https://cdn-icons-png.flaticon.com/512/3112/3112948.png' }
       ];
 
       let balance = 0;
@@ -346,7 +346,7 @@
         if (slider) {
           slider.innerHTML = giftsData.map(g => `
             <div class="gift-mini-card">
-              <img class="gift-mini-img" src="${g.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3137/3137515.png'">
+              <img class="gift-mini-img" src="${g.img}">
               <span class="gift-mini-price">${g.price} G</span>
             </div>
           `).join('');
@@ -356,7 +356,7 @@
         if (grid) {
           grid.innerHTML = giftsData.map((g, index) => `
             <div class="gift-card-item" onclick="depositGift(${index})">
-              <img class="gift-img" src="${g.img}" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3137/3137515.png'">
+              <img class="gift-img" src="${g.img}">
               <div class="gift-name">${g.name}</div>
               <div class="gift-price">💎 ${g.price} GRAM</div>
             </div>
