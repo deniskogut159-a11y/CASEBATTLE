@@ -7,8 +7,10 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; user-select: none; }
-    body { background-color: #0b0c16; color: #ffffff; padding-bottom: 80px; }
+    body { background-color: #0b0c16; color: #ffffff; padding-bottom: 80px; display: flex; justify-content: center; }
     
+    .app-container { width: 100%; max-width: 480px; min-height: 100vh; background: #0b0c16; position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+
     .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #121322; }
     .user-info { display: flex; align-items: center; gap: 10px; }
     .avatar { width: 40px; height: 40px; border-radius: 50%; background: #2a2c42 url('https://picsum.photos/100') center/cover; border: 1px solid #32354e; }
@@ -140,7 +142,7 @@
 
     /* Modal Deposit */
     .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 100; display: none; align-items: flex-end; justify-content: center; }
-    .modal-content { background: #121324; width: 100%; max-height: 85vh; border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 20px; overflow-y: auto; border: 1px solid #23253b; }
+    .modal-content { background: #121324; width: 100%; max-width: 480px; max-height: 85vh; border-top-left-radius: 24px; border-top-right-radius: 24px; padding: 20px; overflow-y: auto; border: 1px solid #23253b; }
     .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 16px; font-weight: 900; }
     .close-modal { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; }
     
@@ -155,148 +157,150 @@
     .gift-name { font-size: 11px; font-weight: 700; color: #d1d5db; margin-bottom: 4px; }
     .gift-price { background: #1162cc; color: #fff; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 6px; }
 
-    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #0c0d18; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #16182c; z-index: 10; }
+    .bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 480px; background: #0c0d18; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #16182c; z-index: 10; }
     .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #505470; font-size: 10px; font-weight: 600; cursor: pointer; }
     .nav-item.active { color: #ffffff; }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <div class="user-info">
-      <div class="avatar" id="userAvatar"></div>
-      <div>
-        <div class="username" id="userName">Користувач</div>
-        <div class="level">Level 1</div>
-      </div>
-    </div>
-    <div class="balance-box">
-      <span class="balance-amount"><span id="bal">0</span> <span class="balance-currency">GRAM</span></span>
-      <button class="plus-btn" onclick="openDeposit()">+</button>
-    </div>
-  </div>
-
-  <div class="online-bar">
-    <div class="online-dot"></div>
-    <span id="onlineCount">Онлайн: 182</span>
-  </div>
-
-  <div class="gifts-slider" id="topGiftsSlider"></div>
-
-  <div id="mainView">
-    <div class="section-title">☁️ Ігри Stonks</div>
-    <div class="games-grid">
-      <div class="game-card" onclick="openCrash()">
-        <div class="card-icon">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3C16.5 3 21 7.5 21 12C21 14.5 19.5 17 18 18C17 19.5 14.5 21 12 21C7.5 21 3 16.5 3 12C3 9.5 4.5 7 6 6C7 4.5 9.5 3 12 3Z" fill="url(#rocket_grad)"/>
-            <circle cx="12" cy="12" r="4" fill="#FFFFFF"/>
-            <defs>
-              <linearGradient id="rocket_grad" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#A855F7"/><stop offset="1" stop-color="#3B82F6"/>
-              </linearGradient>
-            </defs>
-          </svg>
+  <div class="app-container">
+    <div class="header">
+      <div class="user-info">
+        <div class="avatar" id="userAvatar"></div>
+        <div>
+          <div class="username" id="userName">Користувач</div>
+          <div class="level">Level 1</div>
         </div>
-        <div class="game-title">CRASH</div>
       </div>
+      <div class="balance-box">
+        <span class="balance-amount"><span id="bal">0</span> <span class="balance-currency">GRAM</span></span>
+        <button class="plus-btn" onclick="openDeposit()">+</button>
+      </div>
+    </div>
 
-      <div class="game-card" onclick="alert('У розробці!')">
-        <div class="card-icon">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="13" r="7" fill="#EF4444"/>
-            <path d="M12 6V3M12 3C12 3 14 2 15 3" stroke="#EAB308" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+    <div class="online-bar">
+      <div class="online-dot"></div>
+      <span id="onlineCount">Онлайн: 182</span>
+    </div>
+
+    <div class="gifts-slider" id="topGiftsSlider"></div>
+
+    <div id="mainView">
+      <div class="section-title">☁️ Ігри Stonks</div>
+      <div class="games-grid">
+        <div class="game-card" onclick="openCrash()">
+          <div class="card-icon">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3C16.5 3 21 7.5 21 12C21 14.5 19.5 17 18 18C17 19.5 14.5 21 12 21C7.5 21 3 16.5 3 12C3 9.5 4.5 7 6 6C7 4.5 9.5 3 12 3Z" fill="url(#rocket_grad)"/>
+              <circle cx="12" cy="12" r="4" fill="#FFFFFF"/>
+              <defs>
+                <linearGradient id="rocket_grad" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#A855F7"/><stop offset="1" stop-color="#3B82F6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="game-title">CRASH</div>
         </div>
-        <div class="game-title">MINES</div>
-      </div>
 
-      <div class="game-card" onclick="alert('У розробці!')">
-        <div class="card-icon">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="9" fill="#EAB308"/>
-            <text x="12" y="16" font-size="10" font-weight="900" fill="#854D0E" text-anchor="middle">$</text>
-          </svg>
+        <div class="game-card" onclick="alert('У розробці!')">
+          <div class="card-icon">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="13" r="7" fill="#EF4444"/>
+              <path d="M12 6V3M12 3C12 3 14 2 15 3" stroke="#EAB308" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="game-title">MINES</div>
         </div>
-        <div class="game-title">COINFLIP</div>
-      </div>
 
-      <div class="game-card" onclick="alert('У розробці!')">
-        <div class="card-icon">
-          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 8L12 4L21 8L12 12L3 8Z" fill="#F97316"/>
-            <path d="M3 8V16L12 20V12L3 8Z" fill="#C2410C"/>
-            <path d="M21 8V16L12 20V12L21 8Z" fill="#EA580C"/>
-          </svg>
+        <div class="game-card" onclick="alert('У розробці!')">
+          <div class="card-icon">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" fill="#EAB308"/>
+              <text x="12" y="16" font-size="10" font-weight="900" fill="#854D0E" text-anchor="middle">$</text>
+            </svg>
+          </div>
+          <div class="game-title">COINFLIP</div>
         </div>
-        <div class="game-title">CASES</div>
-      </div>
-    </div>
-  </div>
 
-  <div id="crashView">
-    <div class="game-top-bar">
-      <span class="top-link" onclick="closeCrash()">← Назад</span>
-      <span class="top-link">❓ Як грати?</span>
-    </div>
-
-    <div class="crash-card">
-      <div class="multiplier-display" id="multText">1.00x</div>
-      <canvas id="crashCanvas"></canvas>
-    </div>
-
-    <div class="round-info" id="roundStateText">ВКАЖІТЬ СТАВКУ НА НАСТУПНИЙ РАУНД</div>
-
-    <div class="bet-input-box" id="betBox">
-      <span style="font-size:12px; color:#6f7390; font-weight:700;">Ставка:</span>
-      <input type="number" id="betInput" class="bet-input" value="10" min="1">
-      <div class="quick-bets">
-        <button class="q-btn" onclick="setBet(10)">10</button>
-        <button class="q-btn" onclick="setBet(100)">100</button>
-        <button class="q-btn" onclick="setBet(500)">500</button>
+        <div class="game-card" onclick="alert('У розробці!')">
+          <div class="card-icon">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8L12 4L21 8L12 12L3 8Z" fill="#F97316"/>
+              <path d="M3 8V16L12 20V12L3 8Z" fill="#C2410C"/>
+              <path d="M21 8V16L12 20V12L21 8Z" fill="#EA580C"/>
+            </svg>
+          </div>
+          <div class="game-title">CASES</div>
+        </div>
       </div>
     </div>
 
-    <div class="action-buttons">
-      <button class="btn-action btn-blue" id="btnBet" onclick="placeBet()">ПОСТАВИТИ СТАВКУ</button>
-      <button class="btn-action btn-green" id="btnCashout" onclick="cashOut()">
-        <span>ЗАБРАТИ</span>
-        <span class="cashout-sub" id="cashoutAmount">0.00 GRAM</span>
-      </button>
+    <div id="crashView" style="display: none;">
+      <div class="game-top-bar">
+        <span class="top-link" onclick="closeCrash()">← Назад</span>
+        <span class="top-link">❓ Як грати?</span>
+      </div>
+
+      <div class="crash-card">
+        <div class="multiplier-display" id="multText">1.00x</div>
+        <canvas id="crashCanvas"></canvas>
+      </div>
+
+      <div class="round-info" id="roundStateText">ВКАЖІТЬ СТАВКУ НА НАСТУПНИЙ РАУНД</div>
+
+      <div class="bet-input-box" id="betBox">
+        <span style="font-size:12px; color:#6f7390; font-weight:700;">Ставка:</span>
+        <input type="number" id="betInput" class="bet-input" value="10" min="1">
+        <div class="quick-bets">
+          <button class="q-btn" onclick="setBet(10)">10</button>
+          <button class="q-btn" onclick="setBet(100)">100</button>
+          <button class="q-btn" onclick="setBet(500)">500</button>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-action btn-blue" id="btnBet" onclick="placeBet()">ПОСТАВИТИ СТАВКУ</button>
+        <button class="btn-action btn-green" id="btnCashout" onclick="cashOut()">
+          <span>ЗАБРАТИ</span>
+          <span class="cashout-sub" id="cashoutAmount">0.00 GRAM</span>
+        </button>
+      </div>
+
+      <div class="players-container" id="playersList"></div>
     </div>
 
-    <div class="players-container" id="playersList"></div>
-  </div>
-
-  <!-- Deposit Modal -->
-  <div class="modal-overlay" id="depositModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span>ДЕПОЗИТ</span>
-        <button class="close-modal" onclick="closeDeposit()">×</button>
+    <!-- Deposit Modal -->
+    <div class="modal-overlay" id="depositModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span>ДЕПОЗИТ</span>
+          <button class="close-modal" onclick="closeDeposit()">×</button>
+        </div>
+        <div class="deposit-tabs">
+          <div class="dep-tab">Stars</div>
+          <div class="dep-tab">GRAM</div>
+          <div class="dep-tab">Крипто</div>
+          <div class="dep-tab active">Подарунки</div>
+        </div>
+        <div style="font-size: 12px; color: #8e92b2; margin-bottom: 12px; text-align: center;">
+          Надішліть подарунок на акаунт <b>@svatavsex</b> і ми миттєво зараховуємо GRAM на ваш баланс
+        </div>
+        <button class="btn-action btn-blue" style="margin-bottom: 16px;" onclick="window.Telegram.WebApp.openTelegramLink('https://t.me/svatavsex')">Надіслати подарунки</button>
+        
+        <div style="font-size: 13px; font-weight: 800; margin-bottom: 8px;">ЦІНИ НА ПОДАРУНКИ (Натисніть для зарахування)</div>
+        <div class="gifts-grid" id="giftsGridModal"></div>
       </div>
-      <div class="deposit-tabs">
-        <div class="dep-tab">Stars</div>
-        <div class="dep-tab">GRAM</div>
-        <div class="dep-tab">Крипто</div>
-        <div class="dep-tab active">Подарунки</div>
-      </div>
-      <div style="font-size: 12px; color: #8e92b2; margin-bottom: 12px; text-align: center;">
-        Надішліть подарунок на акаунт <b>@svatavsex</b> і ми миттєво зараховуємо GRAM на ваш баланс
-      </div>
-      <button class="btn-action btn-blue" style="margin-bottom: 16px;" onclick="window.Telegram.WebApp.openTelegramLink('https://t.me/svatavsex')">Надіслати подарунки</button>
-      
-      <div style="font-size: 13px; font-weight: 800; margin-bottom: 8px;">ЦІНИ НА ПОДАРУНКИ (Натисніть для зарахування)</div>
-      <div class="gifts-grid" id="giftsGridModal"></div>
     </div>
-  </div>
 
-  <div class="bottom-nav">
-    <div class="nav-item"><span>🎒</span>Інвентар</div>
-    <div class="nav-item active" onclick="closeCrash()"><span>🎲</span>Ігри</div>
-    <div class="nav-item"><span>⚔️</span>PvP</div>
-    <div class="nav-item"><span>🏆</span>Лідери</div>
-    <div class="nav-item"><span>👤</span>Профіль</div>
+    <div class="bottom-nav">
+      <div class="nav-item"><span>🎒</span>Інвентар</div>
+      <div class="nav-item active" onclick="closeCrash()"><span>🎲</span>Ігри</div>
+      <div class="nav-item"><span>⚔️</span>PvP</div>
+      <div class="nav-item"><span>🏆</span>Лідери</div>
+      <div class="nav-item"><span>👤</span>Профіль</div>
+    </div>
   </div>
 
   <script>
