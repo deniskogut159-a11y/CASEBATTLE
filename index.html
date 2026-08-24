@@ -7,14 +7,14 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --bg-color: #0d111a;
-            --card-bg: #141b2d;
-            --card-border: rgba(255, 255, 255, 0.06);
-            --accent-blue: #3b51ff;
+            --bg-color: #0e1621;
+            --card-bg: #17212b;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-blue: #2481cc;
             --accent-cyan: #00ffcc;
             --accent-pink: #ff3366;
             --text-main: #ffffff;
-            --text-muted: #8b9bb4;
+            --text-muted: #7f91a8;
         }
 
         * {
@@ -35,12 +35,12 @@
             overflow: hidden;
         }
 
-        /* Top Header */
+        /* Header */
         .top-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 16px;
+            padding: 10px 14px;
             background: var(--bg-color);
             border-bottom: 1px solid var(--card-border);
         }
@@ -52,12 +52,12 @@
         }
 
         .avatar-box {
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            background: #1a233a;
+            background: #232e3c;
             overflow: hidden;
-            border: 2px solid var(--accent-blue);
+            border: 1px solid var(--accent-blue);
         }
 
         .avatar-box img {
@@ -67,141 +67,133 @@
         }
 
         .user-meta .u-name {
-            font-size: 14px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 700;
             color: var(--text-main);
         }
 
         .user-meta .u-level {
             font-size: 11px;
             color: var(--text-muted);
-            font-weight: 600;
         }
 
         .balance-pill {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 6px 14px;
-            border-radius: 24px;
+            padding: 4px 12px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .balance-val {
-            font-size: 13px;
-            font-weight: 900;
-            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--accent-cyan);
         }
 
         .btn-plus-bal {
             background: var(--accent-blue);
             color: #fff;
             border: none;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             font-weight: 900;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            transition: transform 0.1s;
+            font-size: 13px;
         }
         .btn-plus-bal:active { transform: scale(0.9); }
 
-        /* Views Container */
+        /* Content Views */
         .view-content {
             flex: 1;
             overflow-y: auto;
-            padding: 16px;
+            padding: 12px;
             display: none;
         }
         .view-content.active {
             display: block;
         }
 
-        /* Top Gifts Banner Carousel */
+        /* Top Gifts Banner */
         .top-gifts-banner {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             overflow-x: auto;
-            padding-bottom: 14px;
+            padding-bottom: 10px;
             scrollbar-width: none;
         }
         .top-gifts-banner::-webkit-scrollbar { display: none; }
         
         .gift-mini-card {
-            min-width: 70px;
-            height: 70px;
+            min-width: 64px;
+            height: 64px;
             background: var(--card-bg);
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             border: 1px solid var(--card-border);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .gift-mini-card img {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             object-fit: contain;
         }
         .gift-mini-card span {
-            font-size: 10px;
+            font-size: 9px;
             color: var(--accent-cyan);
-            margin-top: 3px;
-            font-weight: 800;
+            margin-top: 2px;
+            font-weight: 700;
         }
 
         .section-title {
-            font-size: 15px;
-            font-weight: 900;
+            font-size: 14px;
+            font-weight: 800;
             color: var(--text-main);
-            margin: 16px 0 12px 0;
-            letter-spacing: 0.3px;
+            margin: 14px 0 10px 0;
         }
 
         /* Games Grid */
         .games-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 10px;
         }
 
         .game-card {
-            background: linear-gradient(145deg, #161f36, #0e1424);
-            border-radius: 18px;
-            padding: 18px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 16px;
             border: 1px solid var(--card-border);
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 125px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-            transition: all 0.2s;
+            height: 115px;
+            transition: transform 0.1s;
         }
         .game-card:active { transform: scale(0.97); }
         .game-card img {
-            width: 54px;
-            height: 54px;
+            width: 48px;
+            height: 48px;
             object-fit: contain;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            margin-bottom: 8px;
         }
         .game-card span {
-            font-size: 13px;
-            font-weight: 900;
-            letter-spacing: 0.8px;
-            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
         }
 
-        /* Crash Game Screen */
+        /* Crash Screen */
         .crash-container {
             display: flex;
             flex-direction: column;
@@ -213,7 +205,7 @@
             align-items: center;
             font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 700;
         }
         .mult-history-row {
@@ -225,47 +217,45 @@
         .mult-history-row::-webkit-scrollbar { display: none; }
         .mh-pill {
             background: var(--card-bg);
-            padding: 4px 9px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
             border: 1px solid var(--card-border);
         }
         .mh-green { color: var(--accent-cyan); }
         .mh-red { color: var(--accent-pink); }
 
         .crash-screen {
-            background: radial-gradient(circle at center, #1b284d 0%, #0a0f1e 100%);
-            border-radius: 20px;
-            height: 210px;
+            background: linear-gradient(135deg, #1b2735 0%, #090e17 100%);
+            border-radius: 16px;
+            height: 190px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
-            border: 1px solid rgba(59, 81, 255, 0.3);
-            margin-bottom: 12px;
+            border: 1px solid var(--card-border);
+            margin-bottom: 10px;
             overflow: hidden;
-            box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
         }
         .crash-multiplier {
-            font-size: 46px;
+            font-size: 42px;
             font-weight: 900;
             color: #fff;
-            text-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
             z-index: 2;
         }
         .crash-status-text {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
-            margin-bottom: 6px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 4px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             z-index: 2;
         }
 
-        /* Animated Rocket Flight */
+        /* Rocket Flight */
         .rocket-flight-graphic {
             position: absolute;
             width: 100%;
@@ -276,101 +266,99 @@
         }
         .animated-rocket {
             position: absolute;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             transition: all 0.08s linear;
             transform-origin: center;
-            filter: drop-shadow(0 0 10px var(--accent-cyan));
+            filter: drop-shadow(0 0 8px var(--accent-cyan));
         }
 
         .bet-action-btns {
             display: flex;
-            gap: 10px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
         .btn-action-bet {
             flex: 1;
-            background: #17223f;
-            border: 1px solid var(--accent-blue);
+            background: var(--accent-blue);
+            border: none;
             color: #fff;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 13px;
-            font-weight: 900;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(59, 81, 255, 0.2);
+            gap: 6px;
         }
 
         .live-bets-stream {
             flex: 1;
-            background: #101626;
-            border-radius: 14px;
-            padding: 10px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 8px;
             overflow-y: auto;
-            max-height: 130px;
+            max-height: 110px;
             border: 1px solid var(--card-border);
         }
         .live-bet-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 7px 6px;
+            padding: 6px 4px;
             border-bottom: 1px solid var(--card-border);
-            font-size: 12px;
+            font-size: 11px;
         }
-        .lbi-user { display: flex; align-items: center; gap: 8px; }
-        .lbi-av { width: 26px; height: 26px; border-radius: 50%; background: #222d4f; }
-        .lbi-name { font-weight: 800; }
-        .lbi-sub { font-size: 10px; color: var(--text-muted); }
-        .lbi-right { text-align: right; font-weight: 900; color: var(--accent-cyan); }
+        .lbi-user { display: flex; align-items: center; gap: 6px; }
+        .lbi-av { width: 22px; height: 22px; border-radius: 50%; background: #232e3c; }
+        .lbi-name { font-weight: 700; }
+        .lbi-sub { font-size: 9px; color: var(--text-muted); }
+        .lbi-right { text-align: right; font-weight: 800; color: var(--accent-cyan); }
 
-        /* Profile & Inventory Views */
+        /* Profile & Inventory */
         .empty-view {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 320px;
+            height: 280px;
             color: var(--text-muted);
-            gap: 12px;
-            font-weight: 700;
+            gap: 10px;
+            font-size: 13px;
         }
 
         .profile-card-box {
             background: var(--card-bg);
-            border-radius: 18px;
-            padding: 16px;
+            border-radius: 14px;
+            padding: 14px;
             border: 1px solid var(--card-border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
         }
-        .profile-info-left { display: flex; align-items: center; gap: 12px; }
+        .profile-info-left { display: flex; align-items: center; gap: 10px; }
         .profile-avatar-big {
-            width: 52px;
-            height: 52px;
+            width: 46px;
+            height: 46px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--accent-blue);
+            border: 1px solid var(--accent-blue);
         }
         .profile-avatar-big img { width: 100%; height: 100%; object-fit: cover; }
-        .profile-text-data .p-name { font-size: 15px; font-weight: 900; }
-        .profile-text-data .p-username { font-size: 12px; color: var(--text-muted); font-weight: 700; }
+        .profile-text-data .p-name { font-size: 14px; font-weight: 800; }
+        .profile-text-data .p-username { font-size: 11px; color: var(--text-muted); }
 
         .btn-connect-wallet {
-            background: #19233f;
+            background: #232e3c;
             border: 1px solid var(--card-border);
             color: #fff;
-            padding: 8px 14px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
             cursor: pointer;
         }
         .btn-profile-deposit {
@@ -378,132 +366,115 @@
             background: var(--accent-blue);
             color: #fff;
             border: none;
-            padding: 15px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 900;
+            padding: 13px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 800;
             cursor: pointer;
-            margin-bottom: 16px;
-            box-shadow: 0 6px 18px rgba(59, 81, 255, 0.3);
+            margin-bottom: 14px;
         }
-
-        .referral-box {
-            background: var(--card-bg);
-            border-radius: 18px;
-            padding: 16px;
-            border: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .referral-box img { width: 50px; height: 50px; object-fit: contain; }
 
         /* Deposit Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(7, 10, 18, 0.85);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.7);
             display: none;
             justify-content: center;
             align-items: flex-end;
             z-index: 1000;
         }
         .modal-sheet {
-            background: #111827;
+            background: var(--card-bg);
             width: 100%;
-            max-height: 85vh;
-            border-top-left-radius: 24px;
-            border-top-right-radius: 24px;
-            padding: 20px;
-            border-top: 2px solid var(--accent-blue);
+            max-height: 80vh;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            padding: 16px;
+            border-top: 1px solid var(--card-border);
             display: flex;
             flex-direction: column;
             overflow-y: auto;
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
         }
         .modal-header-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
-        .modal-title { font-size: 16px; font-weight: 900; letter-spacing: 0.5px; }
-        .modal-close-btn { background: none; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer; font-weight: bold; }
+        .modal-title { font-size: 15px; font-weight: 800; }
+        .modal-close-btn { background: none; border: none; color: var(--text-muted); font-size: 16px; cursor: pointer; }
         
         .deposit-methods {
             display: flex;
-            gap: 8px;
-            margin-bottom: 14px;
+            gap: 6px;
+            margin-bottom: 12px;
             overflow-x: auto;
             scrollbar-width: none;
         }
         .dep-meth-tab {
-            background: #18223c;
-            padding: 8px 14px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 800;
+            background: #232e3c;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 700;
             color: var(--text-muted);
             cursor: pointer;
             white-space: nowrap;
             border: 1px solid var(--card-border);
         }
-        .dep-meth-tab.active { color: #fff; background: #261726; border-color: var(--accent-pink); }
+        .dep-meth-tab.active { color: #fff; background: var(--accent-blue); border-color: transparent; }
         
         .dep-desc-box {
-            background: #090d18;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 12px;
+            background: #0e1621;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 11px;
             color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 16px;
+            line-height: 1.4;
+            margin-bottom: 14px;
             text-align: center;
             border: 1px solid var(--card-border);
         }
-        .dep-desc-box span { color: var(--accent-cyan); font-weight: 900; }
+        .dep-desc-box span { color: var(--accent-cyan); font-weight: 800; }
         
         .btn-send-gift-bot {
             width: 100%;
             background: var(--accent-blue);
             color: #fff;
             border: none;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 900;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 800;
             cursor: pointer;
-            margin-bottom: 14px;
-            box-shadow: 0 4px 15px rgba(59, 81, 255, 0.3);
+            margin-bottom: 12px;
         }
 
         .fragment-gifts-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 8px;
         }
         .frag-gift-card {
-            background: #18223c;
-            border-radius: 14px;
-            padding: 12px;
+            background: #232e3c;
+            border-radius: 12px;
+            padding: 10px;
             text-align: center;
             border: 1px solid var(--card-border);
             cursor: pointer;
-            transition: transform 0.1s;
         }
-        .frag-gift-card:active { transform: scale(0.96); }
-        .frag-gift-card img { width: 42px; height: 42px; object-fit: contain; margin-bottom: 6px; }
-        .frag-gift-card .fg-name { font-size: 11px; font-weight: 800; }
-        .frag-gift-card .fg-price { font-size: 10px; color: var(--accent-cyan); font-weight: 900; margin-top: 2px; }
+        .frag-gift-card img { width: 38px; height: 38px; object-fit: contain; margin-bottom: 4px; }
+        .frag-gift-card .fg-name { font-size: 10px; font-weight: 700; }
+        .frag-gift-card .fg-price { font-size: 9px; color: var(--accent-cyan); font-weight: 800; margin-top: 2px; }
 
-        /* Bottom Navigation Bar */
+        /* Bottom Nav */
         .bottom-nav {
             display: flex;
             justify-content: space-around;
             background: var(--bg-color);
             border-top: 1px solid var(--card-border);
-            padding: 8px 0 10px 0;
+            padding: 6px 0 8px 0;
         }
         .nav-btn {
             display: flex;
@@ -511,15 +482,14 @@
             align-items: center;
             background: none;
             border: none;
-            color: #55627a;
+            color: var(--text-muted);
             font-size: 10px;
-            font-weight: 800;
+            font-weight: 700;
             cursor: pointer;
-            gap: 4px;
-            transition: color 0.2s;
+            gap: 3px;
         }
         .nav-btn.active { color: var(--accent-blue); }
-        .nav-btn svg { width: 22px; height: 22px; fill: currentColor; }
+        .nav-btn svg { width: 20px; height: 20px; fill: currentColor; }
     </style>
 </head>
 <body>
@@ -531,12 +501,12 @@
                 <img id="header-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Avatar">
             </div>
             <div class="user-meta">
-                <div class="u-name" id="header-username">Користувач</div>
+                <div class="u-name" id="header-username">Svatavsex</div>
                 <div class="u-level">Рівень 1</div>
             </div>
         </div>
         <div class="balance-pill">
-            <span class="balance-val" id="user-balance-disp">0 GRAM</span>
+            <span class="balance-val" id="user-balance-disp">0.00 GRAM</span>
             <button class="btn-plus-bal" onclick="openDepositModal()">+</button>
         </div>
     </div>
@@ -584,7 +554,6 @@
                     <span class="mh-pill mh-green">1.27x</span>
                     <span class="mh-pill mh-green">4.67x</span>
                     <span class="mh-pill mh-green">1.94x</span>
-                    <span class="mh-pill mh-red">52.65x</span>
                 </div>
             </div>
 
@@ -599,12 +568,7 @@
             </div>
 
             <div class="bet-action-btns">
-                <button class="btn-action-bet" onclick="openDepositModal()">
-                    🎁 Ставка GRAM
-                </button>
-                <button class="btn-action-bet" onclick="openDepositModal()" style="border-color: #ff3366;">
-                    💎 Ставка GEMS
-                </button>
+                <button class="btn-action-bet" onclick="openDepositModal()">🎁 Зробити ставку</button>
             </div>
 
             <div class="live-bets-stream">
@@ -612,7 +576,7 @@
                     <div class="lbi-user">
                         <div class="lbi-av"></div>
                         <div>
-                            <div class="lbi-name">Максим Санько</div>
+                            <div class="lbi-name">Svatavsex</div>
                             <div class="lbi-sub">0.25 GRAM • x1.98</div>
                         </div>
                     </div>
@@ -625,7 +589,7 @@
     <!-- VIEW: INVENTORY -->
     <div id="view-inventory" class="view-content">
         <div class="empty-view">
-            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="48" style="opacity:0.5">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="40" style="opacity:0.4">
             <div>Інвентар порожній</div>
         </div>
     </div>
@@ -646,21 +610,13 @@
             <div class="profile-info-left">
                 <div class="profile-avatar-big"><img id="prof-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100"></div>
                 <div class="profile-text-data">
-                    <div class="p-name" id="prof-name">Користувач</div>
+                    <div class="p-name" id="prof-name">Svatavsex</div>
                     <div class="p-username" id="prof-username">@svatavsex</div>
                 </div>
             </div>
-            <button class="btn-connect-wallet" onclick="alert('Підключено')">Підключити</button>
+            <button class="btn-connect-wallet" onclick="alert('Підключено')">TON Wallet</button>
         </div>
-        <button class="btn-profile-deposit" onclick="openDepositModal()">Поповнення</button>
-        <div class="section-title">Реферали</div>
-        <div class="referral-box">
-            <div>
-                <div style="font-size: 15px; font-weight: 900;">Рівень 1</div>
-                <div style="font-size: 12px; color: var(--accent-cyan); margin-top: 4px; font-weight: 800;">10% від прибутку</div>
-            </div>
-            <img src="https://nft.fragment.com/gift/gingerbread-512.webp">
-        </div>
+        <button class="btn-profile-deposit" onclick="openDepositModal()">Поповнити баланс</button>
     </div>
 
     <!-- DEPOSIT MODAL -->
@@ -671,17 +627,15 @@
                 <button class="modal-close-btn" onclick="closeDepositModal()">✕</button>
             </div>
             <div class="deposit-methods">
-                <div class="dep-meth-tab">⭐ Stars</div>
-                <div class="dep-meth-tab">💳 СБП</div>
-                <div class="dep-meth-tab active">💎 GRAM</div>
-                <div class="dep-meth-tab">⚡ Крипто</div>
                 <div class="dep-meth-tab active">🎁 Подарунки</div>
+                <div class="dep-meth-tab">⭐ Stars</div>
+                <div class="dep-meth-tab">⚡ Крипто</div>
             </div>
             <div class="dep-desc-box">
-                Надішліть подарунок на акаунт <span id="deposit-target-acc">@svatavsex</span> і ми миттєво зарахуємо GRAM на ваш баланс.
+                Надішліть подарунок на акаунт <span id="deposit-target-acc">@svatavsex</span> і ми миттєво зарахуємо баланс.
             </div>
-            <button class="btn-send-gift-bot" onclick="simulateGiftDeposit('IT Gift', 15.00)">🎁 Надіслати подарунки</button>
-            <div class="section-title" style="font-size: 13px; margin: 8px 0;">ОРИГІНАЛЬНІ ПОДАРУНКИ FRAGMENT NFT</div>
+            <button class="btn-send-gift-bot" onclick="simulateGiftDeposit('IT Gift', 15.00)">🎁 Надіслати подарунок</button>
+            <div class="section-title" style="font-size: 12px; margin: 6px 0;">ПОДАРУНКИ FRAGMENT NFT</div>
             <div class="fragment-gifts-grid">
                 <div class="frag-gift-card" onclick="simulateGiftDeposit('IT Gift', 15.00)">
                     <img src="https://nft.fragment.com/gift/laptop-512.webp">
@@ -731,8 +685,6 @@
         tg.expand();
 
         let userBalance = 0.00;
-
-        // Примусова заміна імені та username на твої дані на випадок запуску в браузері ПК
         let currentName = "Svatavsex";
         let currentUsername = "@svatavsex";
         let currentAvatar = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100";
@@ -792,7 +744,6 @@
             closeDepositModal();
         }
 
-        // Логіка польоту ракети
         let mult = 1.00;
         let isFlying = false;
         let countdown = 5.0;
