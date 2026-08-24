@@ -114,15 +114,10 @@
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.05);
         }
-        .gift-mini-card img {
-            width: 32px;
-            height: 32px;
-            object-fit: contain;
-        }
         .gift-mini-card span {
-            font-size: 9px;
+            font-size: 10px;
             color: #00ffcc;
-            margin-top: 2px;
+            margin-top: 4px;
             font-weight: 700;
         }
 
@@ -149,17 +144,12 @@
             justify-content: center;
             height: 110px;
         }
-        .game-card img {
-            width: 55px;
-            height: 55px;
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
         .game-card span {
             font-size: 13px;
             font-weight: 900;
             letter-spacing: 0.5px;
             color: #fff;
+            margin-top: 8px;
         }
 
         /* Crash Game View */
@@ -254,10 +244,6 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
-        }
-        .btn-action-bet img {
-            width: 18px;
-            height: 18px;
         }
 
         .live-bets-stream {
@@ -358,7 +344,6 @@
             justify-content: space-between;
             align-items: center;
         }
-        .referral-box img { width: 60px; height: 60px; object-fit: contain; }
 
         /* Deposit Modal */
         .modal-overlay {
@@ -439,14 +424,13 @@
         .frag-gift-card {
             background: #1b2444;
             border-radius: 12px;
-            padding: 10px;
+            padding: 12px 10px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.05);
             cursor: pointer;
         }
-        .frag-gift-card img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 4px; }
-        .frag-gift-card .fg-name { font-size: 11px; font-weight: 700; }
-        .frag-gift-card .fg-price { font-size: 10px; color: #00ffcc; font-weight: 800; }
+        .frag-gift-card .fg-name { font-size: 11px; font-weight: 700; margin-top: 4px; }
+        .frag-gift-card .fg-price { font-size: 10px; color: #00ffcc; font-weight: 800; margin-top: 2px; }
 
         /* Bottom Navigation Bar */
         .bottom-nav {
@@ -493,30 +477,30 @@
     <!-- VIEW: GAMES -->
     <div id="view-games" class="view-content active">
         <div class="top-gifts-banner">
-            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/rose-512.webp"><span>5.13 GRAM</span></div>
-            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/heart-512.webp"><span>0.33 GRAM</span></div>
-            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/sword-512.webp"><span>6.92 GRAM</span></div>
-            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/lollipop-512.webp"><span>4.22 GRAM</span></div>
-            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/cat-512.webp"><span>195 GRAM</span></div>
-            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/hat-512.webp"><span>5.52 GRAM</span></div>
+            <div class="gift-mini-card"><span style="font-size:20px;">🌹</span><span>5.13 GRAM</span></div>
+            <div class="gift-mini-card"><span style="font-size:20px;">❤️</span><span>0.33 GRAM</span></div>
+            <div class="gift-mini-card"><span style="font-size:20px;">⚔️</span><span>6.92 GRAM</span></div>
+            <div class="gift-mini-card"><span style="font-size:20px;">🍭</span><span>4.22 GRAM</span></div>
+            <div class="gift-mini-card"><span style="font-size:20px;">🐱</span><span>195 GRAM</span></div>
+            <div class="gift-mini-card"><span style="font-size:20px;">🎩</span><span>5.52 GRAM</span></div>
         </div>
 
         <div class="section-title">🔥 Ігри Svatavsex</div>
         <div class="games-grid">
             <div class="game-card" onclick="switchTab('crash')">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+                <span style="font-size: 32px;">🚀</span>
                 <span>CRASH</span>
             </div>
             <div class="game-card" onclick="alert('Гра Mines в розробці')">
-                <img src="https://cdn-icons-png.flaticon.com/512/566/566782.png">
+                <span style="font-size: 32px;">💣</span>
                 <span>MINES</span>
             </div>
             <div class="game-card" onclick="alert('Гра Cases в розробці')">
-                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313437.png">
+                <span style="font-size: 32px;">📦</span>
                 <span>CASES</span>
             </div>
             <div class="game-card" onclick="alert('Гра Upgrade в розробці')">
-                <img src="https://cdn-icons-png.flaticon.com/512/2534/2534183.png">
+                <span style="font-size: 32px;">⚡</span>
                 <span>UPGRADE</span>
             </div>
         </div>
@@ -549,10 +533,10 @@
 
             <div class="bet-action-btns">
                 <button class="btn-action-bet" onclick="openDepositModal()">
-                    <img src="https://nft.fragment.com/gift/gift-box-512.webp"> Ставка 🎁
+                    🎁 Ставка GRAM
                 </button>
                 <button class="btn-action-bet" onclick="openDepositModal()" style="border-color: #ff3366;">
-                    💎 Ставка 💎
+                    💎 Ставка GEMS
                 </button>
             </div>
 
@@ -574,7 +558,7 @@
     <!-- VIEW: INVENTORY -->
     <div id="view-inventory" class="view-content">
         <div class="empty-inventory">
-            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="48" style="opacity:0.5">
+            <span style="font-size: 40px; opacity: 0.5;">🎒</span>
             <div>Інвентар порожній</div>
         </div>
     </div>
@@ -608,7 +592,7 @@
                 <div style="font-size: 15px; font-weight: 800;">Рівень 1</div>
                 <div style="font-size: 12px; color: #00ffcc; margin-top: 4px; font-weight: 700;">10% від прибутку</div>
             </div>
-            <img src="https://nft.fragment.com/gift/gingerbread-512.webp">
+            <span style="font-size: 32px;">🎁</span>
         </div>
     </div>
 
@@ -633,18 +617,18 @@
             <div class="section-title" style="font-size: 13px; margin: 8px 0;">ОРИГІНАЛЬНІ ПОДАРУНКИ FRAGMENT NFT</div>
             <div class="fragment-gifts-grid">
                 <div class="frag-gift-card" onclick="simulateGiftDeposit('IT Gift', 15.00)">
-                    <img src="https://nft.fragment.com/gift/laptop-512.webp">
-                    <div class="fg-name">💻 IT Gift</div>
+                    <div style="font-size: 28px;">💻</div>
+                    <div class="fg-name">IT Gift</div>
                     <div class="fg-price">+15.00 GRAM</div>
                 </div>
                 <div class="frag-gift-card" onclick="simulateGiftDeposit('Rose', 5.00)">
-                    <img src="https://nft.fragment.com/gift/rose-512.webp">
-                    <div class="fg-name">🌹 Rose</div>
+                    <div style="font-size: 28px;">🌹</div>
+                    <div class="fg-name">Rose</div>
                     <div class="fg-price">+5.00 GRAM</div>
                 </div>
                 <div class="frag-gift-card" onclick="simulateGiftDeposit('Teddy', 10.00)">
-                    <img src="https://nft.fragment.com/gift/teddy-512.webp">
-                    <div class="fg-name">🧸 Teddy</div>
+                    <div style="font-size: 28px;">🧸</div>
+                    <div class="fg-name">Teddy</div>
                     <div class="fg-price">+10.00 GRAM</div>
                 </div>
             </div>
@@ -734,7 +718,6 @@
             closeDepositModal();
         }
 
-        // Crash logic with 5s pause & rocket flight
         let mult = 1.00;
         let isFlying = false;
         let countdown = 5.0;
