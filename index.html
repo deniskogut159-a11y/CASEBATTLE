@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StonksGift 💎</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        body { background-color: #0b0c16; color: #ffffff; padding-bottom: 70px; display: flex; justify-content: center; }
+        .app-container { width: 100%; max-width: 480px; min-height: 100vh; background: #0b0c16; position: relative; display: flex; flex-direction: column; }
+        
+        /* Хедер */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #121322; border-bottom: 1px solid #1f223d; }
+        .user-info { display: flex; align-items: center; gap: 10px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6; }
+        .user-details .name { font-weight: 600; font-size: 14px; }
+        .user-details .level { font-size: 12px; color: #94a3b8; }
+        
+        .balance-box { display: flex; align-items: center; background: #1a1c33; padding: 6px 12px; border-radius: 20px; gap: 8px; border: 1px solid #2a2e5d; }
+        .balance-amount { font-weight: 700; font-size: 14px; color: #60a5fa; }
+        .deposit-btn { background: #2563eb; color: white; border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .deposit-btn:hover { background: #1d4ed8; }
+
+        /* Вкладки контенту */
+        .tab-content { display: none; padding: 16px; flex: 1; }
+        .tab-content.active { display: block; }
+
+        /* Онлайн бейдж */
+        .online-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #4ade80; margin-bottom: 12px; background: rgba(74, 222, 128, 0.1); padding: 4px 10px; border-radius: 12px; }
+        .online-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; box-shadow: 0 0 8px #4ade80; }
+
+        /* Ракетка (Crash гра) */
+        .crash-screen { background: #121322; border-radius: 16px; padding: 16px; border: 1px solid #1f223d; text-align: center; position: relative; overflow: hidden; height: 260px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .multiplier { font-size: 42px; font-weight: 800; color: #60a5fa; text-shadow: 0 0 20px rgba(96, 165, 250, 0.4); }
+        .rocket-icon { font-size: 50px; margin-top: 10px; animation: float 2s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(-45deg); } 50% { transform: translateY(-10px) rotate(-42deg); } }
+
+        .control-panel { margin-top: 16px; background: #121322; padding: 16px; border-radius: 16px; border: 1px solid #1f223d; }
+        .input-group { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #1a1c33; padding: 10px 14px; border-radius: 12px; }
+        .input-group input { background: transparent; border: none; color: #fff; font-size: 18px; font-weight: 700; width: 100px; outline: none; }
+        .action-btn { width: 100%; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; border: none; padding: 14px; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); transition: 0.2s; }
+        .action-btn:active { transform: scale(0.98); }
+
+        /* Апгрейд */
+        .upgrade-box { text-align: center; padding: 40px 20px; background: #121322; border-radius: 16px; border: 1px solid #1f223d; }
+        .upgrade-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #f43f5e; }
+        .upgrade-desc { color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+
+        /* Модальне вікно депозиту подарунків */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; justify-content: center; align-items: flex-end; }
+        .modal-content { background: #121322; width: 100%; max-width: 480px; border-radius: 24px 24px 0 0; padding: 20px; border-top: 1px solid #2a2e5d; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .close-modal { background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
+        .gift-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-height: 300px; overflow-y: auto; }
+        .gift-card { background: #1a1c33; border: 1px solid #2a2e5d; border-radius: 14px; padding: 12px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .gift-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+        .gift-name { font-size: 13px; font-weight: 600; margin-top: 6px; }
+        .gift-price { font-size: 12px; color: #60a5fa; margin-top: 4px; }
+
+        /* Нижня навігація */
+        .nav-bar { position: fixed; bottom: 0; width: 100%; max-width: 480px; background: #121322; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #1f223d; z-index: 50; }
+        .nav-item { background: none; border: none; color: #94a3b8; font-size: 11px; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; transition: 0.2s; }
+        .nav-item.active { color: #60a5fa; }
+        .nav-item svg { width: 22px; height: 22px; fill: currentColor; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Хедер профілю -->
+    <div class="header">
+        <div class="user-info">
+            <img id="user-avatar" class="avatar" src="https://via.placeholder.com/40" alt="Avatar">
+            <div class="user-details">
+                <div id="user-name" class="name">Гравець</div>
+                <div class="level">Рівень 1</div>
+            </div>
+        </div>
+        <div class="balance-box">
+            <span id="balance" class="balance-amount">0.00</span> <span style="font-size:12px; color:#60a5fa;">GRAM</span>
+            <button class="deposit-btn" onclick="openDeposit()">+</button>
+        </div>
+    </div>
+
+    <!-- Вкладка 1: Ракетка (Crash) -->
+    <div id="tab-crash" class="tab-content active">
+        <div class="online-badge">
+            <div class="online-dot"></div>
+            <span id="online-count">982</span> Онлайн
+        </div>
+        <div class="crash-screen">
+            <div id="multiplier" class="multiplier">1.00x</div>
+            <div class="rocket-icon">🚀</div>
+        </div>
+        <div class="control-panel">
+            <div class="input-group">
+                <span>Ставка (GRAM):</span>
+                <input type="number" id="bet-amount" min="1" max="1000" value="10">
+            </div>
+            <button id="play-btn" class="action-btn" onclick="toggleGame()">Зробити ставку</button>
+        </div>
+    </div>
+
+    <!-- Вкладка 2: Апгрейд -->
+    <div id="tab-upgrade" class="tab-content">
+        <div class="upgrade-box">
+            <div class="upgrade-title">⚡ Апгрейд Предметів</div>
+            <div class="upgrade-desc">Покращуйте свої подарунки та вигравайте цінніші NFT та GRAM з підвищеним шансом!</div>
+            <button class="action-btn" onclick="alert('Оберіть предмет для апгрейду в інвентарі!')">Почати апгрейд</button>
+        </div>
+    </div>
+
+    <!-- Модальне вікно депозиту (Подарунки NFT) -->
+    <div id="deposit-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Депозит подарунком</h3>
+                <button class="close-modal" onclick="closeDeposit()">&times;</button>
+            </div>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 14px;">Оберіть подарунок для переказу на @svatavsex (автоматично зарахує GRAM):</p>
+            <div class="gift-grid">
+                <div class="gift-card" onclick="sendGift('Doshik Premium', 5.00)">
+                    <div style="font-size: 24px;">🍜</div>
+                    <div class="gift-name">Doshik Premium</div>
+                    <div class="gift-price">5.00 GRAM</div>
+                </div>
+                <div class="gift-card" onclick="sendGift('Crypto Toad', 15.00)">
+                    <div style="font-size: 24px;">🐸</div>
+                    <div class="gift-name">Crypto Toad</div>
+                    <div class="gift-price">15.00 GRAM</div>
+                </div>
+                <div class="gift-card" onclick="sendGift('Neon Rocket', 50.00)">
+                    <div style="font-size: 24px;">🚀</div>
+                    <div class="gift-name">Neon Rocket</div>
+                    <div class="gift-price">50.00 GRAM</div>
+                </div>
+                <div class="gift-card" onclick="sendGift('Diamond Crown', 100.00)">
+                    <div style="font-size: 24px;">👑</div>
+                    <div class="gift-name">Diamond Crown</div>
+                    <div class="gift-price">100.00 GRAM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Нижня навігація -->
+    <div class="nav-bar">
+        <button class="nav-item active" onclick="switchTab('crash', this)">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Ракетка
+        </button>
+        <button class="nav-item" onclick="switchTab('upgrade', this)">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 14h-2v-2h2zm0-4h-2V7h2z"/></svg>
+            Апгрейд
+        </button>
+    </div>
+</div>
+
+<script>
+    // Ініціалізація Telegram WebApp та профілю
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        const user = tg.initDataUnsafe.user;
+        document.getElementById('user-name').innerText = user.first_name || 'Гравець';
+        if (user.photo_url) {
+            document.getElementById('user-avatar').src = user.photo_url;
+        }
+    }
+
+    let balance = 25.00; // Стартовий бонус для тесту
+    document.getElementById('balance').innerText = balance.toFixed(2);
+
+    // Онлайн лічильник
+    setInterval(() => {
+        let online = 950 + Math.floor(Math.random() * 80);
+        document.getElementById('online-count').innerText = online;
+    }, 4000);
+
+    // Перемикання вкладок
+    function switchTab(tabName, element) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        
+        document.getElementById('tab-' + tabName).classList.add('active');
+        element.classList.add('active');
+    }
+
+    // Модальне вікно депозиту
+    function openDeposit() { document.getElementById('deposit-modal').style.display = 'flex'; }
+    function closeDeposit() { document.getElementById('deposit-modal').style.display = 'none'; }
+
+    // Надсилання подарунка на @svatavsex
+    function sendGift(giftName, price) {
+        if(confirm(`Надіслати подарунок "${giftName}" (${price} GRAM) на @svatavsex?`)) {
+            // Перенаправлення в телеграм на ваш акаунт
+            window.open(`https://t.me/svatavsex`, '_blank');
+            // Автоматичне зарахування GRAM
+            balance += price;
+            document.getElementById('balance').innerText = balance.toFixed(2);
+            closeDeposit();
+            alert(`Успішно! Вам нараховано ${price} GRAM 💎`);
+        }
+    }
+
+    // Логіка гри Ракетка
+    let isPlaying = false;
+    let currentMultiplier = 1.00;
+    let gameInterval;
+
+    function toggleGame() {
+        let betInput = document.getElementById('bet-amount');
+        let bet = parseFloat(betInput.value);
+        let btn = document.getElementById('play-btn');
+
+        if (isNaN(bet) || bet < 1 || bet > 1000) {
+            alert('Будь ласка, введіть ставку від 1 до 1000 GRAM');
+            return;
+        }
+
+        if (!isPlaying) {
+            if (balance < bet) {
+                alert('Недостатньо GRAM на балансі! Зробіть депозит.');
+                return;
+            }
+            balance -= bet;
+            document.getElementById('balance').innerText = balance.toFixed(2);
+
+            isPlaying = true;
+            btn.innerText = 'Забрати виграш';
+            btn.style.background = 'linear-gradient(135deg, #f43f5e, #be123c)';
+            
+            currentMultiplier = 1.00;
+            gameInterval = setInterval(() => {
+                currentMultiplier += 0.03 + (currentMultiplier * 0.02);
+                document.getElementById('multiplier').innerText = currentMultiplier.toFixed(2) + 'x';
+
+                // Випадковий краш
+                if (Math.random() < 0.03 && currentMultiplier > 1.5) {
+                    endGame(false);
+                }
+            }, 100);
+        } else {
+            // Забрати виграш з комісією 5%
+            let rawWin = bet * currentMultiplier;
+            let winWithFee = rawWin * 0.95; // Комісія 5%
+            balance += winWithFee;
+            document.getElementById('balance').innerText = balance.toFixed(2);
+            alert(`Ви успішно забрали ${winWithFee.toFixed(2)} GRAM (враховуючи комісію 5%)!`);
+            endGame(true);
+        }
+    }
+
+    function endGame(success) {
+        clearInterval(gameInterval);
+        isPlaying = false;
+        let btn = document.getElementById('play-btn');
+        btn.innerText = 'Зробити ставку';
+        btn.style.background = 'linear-gradient(135deg, #3b82f6, #1d4ed8)';
+        if(!success) {
+            document.getElementById('multiplier').innerText = 'CRASHED 💥';
+        }
+    }
+</script>
+
+</body>
+</html>
