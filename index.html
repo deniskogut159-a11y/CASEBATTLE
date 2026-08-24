@@ -21,7 +21,6 @@
             height: 100vh;
             overflow: hidden;
         }
-        /* Top Header */
         .top-header {
             display: flex;
             justify-content: space-between;
@@ -85,7 +84,6 @@
             font-size: 14px;
         }
 
-        /* Content Views Container */
         .view-content {
             flex: 1;
             overflow-y: auto;
@@ -96,7 +94,7 @@
             display: block;
         }
 
-        /* --- GAMES MAIN VIEW (Скрін 1) --- */
+        /* Games Home View */
         .top-gifts-banner {
             display: flex;
             gap: 8px;
@@ -115,7 +113,6 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.05);
-            position: relative;
         }
         .gift-mini-card img {
             width: 32px;
@@ -134,9 +131,6 @@
             font-weight: 800;
             color: #fff;
             margin: 14px 0 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
         .games-grid {
             display: grid;
@@ -152,14 +146,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-            height: 110px;
             justify-content: center;
-            transition: 0.2s;
-        }
-        .game-card:active {
-            transform: scale(0.97);
+            height: 110px;
         }
         .game-card img {
             width: 55px;
@@ -174,7 +162,7 @@
             color: #fff;
         }
 
-        /* --- CRASH GAME VIEW (Скрін 2) --- */
+        /* Crash Game View */
         .crash-container {
             display: flex;
             flex-direction: column;
@@ -240,7 +228,7 @@
             transition: transform 0.1s linear;
         }
         .crash-status-text {
-            font-size: 12px;
+            font-size: 11px;
             color: #8b9bb4;
             margin-bottom: 4px;
             font-weight: 700;
@@ -300,20 +288,11 @@
             border-radius: 50%;
             background: #232d54;
         }
-        .lbi-name {
-            font-weight: 700;
-        }
-        .lbi-sub {
-            font-size: 10px;
-            color: #8b9bb4;
-        }
-        .lbi-right {
-            text-align: right;
-            font-weight: 800;
-            color: #00ffcc;
-        }
+        .lbi-name { font-weight: 700; }
+        .lbi-sub { font-size: 10px; color: #8b9bb4; }
+        .lbi-right { text-align: right; font-weight: 800; color: #00ffcc; }
 
-        /* --- INVENTORY VIEW (Скрін з інвентарем) --- */
+        /* Inventory & Profile Views */
         .empty-inventory {
             display: flex;
             flex-direction: column;
@@ -323,13 +302,6 @@
             color: #8b9bb4;
             gap: 10px;
         }
-        .empty-inventory img {
-            width: 48px;
-            height: 48px;
-            opacity: 0.5;
-        }
-
-        /* --- PROFILE VIEW (Скрін профілю) --- */
         .profile-card-box {
             background: #141b33;
             border-radius: 16px;
@@ -352,19 +324,9 @@
             overflow: hidden;
             border: 2px solid #2b52ff;
         }
-        .profile-avatar-big img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .profile-text-data .p-name {
-            font-size: 15px;
-            font-weight: 800;
-        }
-        .profile-text-data .p-username {
-            font-size: 12px;
-            color: #8b9bb4;
-        }
+        .profile-avatar-big img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-text-data .p-name { font-size: 15px; font-weight: 800; }
+        .profile-text-data .p-username { font-size: 12px; color: #8b9bb4; }
         .btn-connect-wallet {
             background: #1d2951;
             border: 1px solid rgba(255,255,255,0.1);
@@ -385,7 +347,6 @@
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(43,82,255,0.4);
             margin-bottom: 14px;
         }
         .referral-box {
@@ -397,13 +358,9 @@
             justify-content: space-between;
             align-items: center;
         }
-        .referral-box img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-        }
+        .referral-box img { width: 60px; height: 60px; object-fit: contain; }
 
-        /* --- DEPOSIT MODAL (Скрін поповнення подарунками) --- */
+        /* Deposit Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -431,18 +388,8 @@
             align-items: center;
             margin-bottom: 12px;
         }
-        .modal-title {
-            font-size: 16px;
-            font-weight: 900;
-        }
-        .modal-close-btn {
-            background: none;
-            border: none;
-            color: #8b9bb4;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .modal-title { font-size: 16px; font-weight: 900; }
+        .modal-close-btn { background: none; border: none; color: #8b9bb4; font-size: 16px; cursor: pointer; font-weight: bold; }
         .deposit-methods {
             display: flex;
             gap: 8px;
@@ -459,13 +406,8 @@
             color: #8b9bb4;
             cursor: pointer;
             white-space: nowrap;
-            border: 1px solid transparent;
         }
-        .dep-meth-tab.active {
-            color: #fff;
-            border-color: #ff3366;
-            background: #25162d;
-        }
+        .dep-meth-tab.active { color: #fff; border-color: #ff3366; background: #25162d; border: 1px solid #ff3366; }
         .dep-desc-box {
             background: #0c1021;
             padding: 12px;
@@ -476,10 +418,7 @@
             margin-bottom: 14px;
             text-align: center;
         }
-        .dep-desc-box span {
-            color: #00ffcc;
-            font-weight: 800;
-        }
+        .dep-desc-box span { color: #00ffcc; font-weight: 800; }
         .btn-send-gift-bot {
             width: 100%;
             background: #2b52ff;
@@ -491,7 +430,6 @@
             font-weight: 800;
             cursor: pointer;
             margin-bottom: 14px;
-            box-shadow: 0 4px 12px rgba(43,82,255,0.3);
         }
         .fragment-gifts-grid {
             display: grid;
@@ -506,23 +444,11 @@
             border: 1px solid rgba(255,255,255,0.05);
             cursor: pointer;
         }
-        .frag-gift-card img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            margin-bottom: 4px;
-        }
-        .frag-gift-card .fg-name {
-            font-size: 11px;
-            font-weight: 700;
-        }
-        .frag-gift-card .fg-price {
-            font-size: 10px;
-            color: #00ffcc;
-            font-weight: 800;
-        }
+        .frag-gift-card img { width: 40px; height: 40px; object-fit: contain; margin-bottom: 4px; }
+        .frag-gift-card .fg-name { font-size: 11px; font-weight: 700; }
+        .frag-gift-card .fg-price { font-size: 10px; color: #00ffcc; font-weight: 800; }
 
-        /* Bottom Nav Bar */
+        /* Bottom Navigation Bar */
         .bottom-nav {
             display: flex;
             justify-content: space-around;
@@ -542,19 +468,12 @@
             cursor: pointer;
             gap: 4px;
         }
-        .nav-btn.active {
-            color: #2b52ff;
-        }
-        .nav-btn svg {
-            width: 22px;
-            height: 22px;
-            fill: currentColor;
-        }
+        .nav-btn.active { color: #2b52ff; }
+        .nav-btn svg { width: 22px; height: 22px; fill: currentColor; }
     </style>
 </head>
 <body>
 
-    <!-- Top Bar -->
     <div class="top-header">
         <div class="user-profile-mini">
             <div class="avatar-box">
@@ -571,57 +490,39 @@
         </div>
     </div>
 
-    <!-- VIEW 1: GAMES (Ігри) -->
+    <!-- VIEW: GAMES -->
     <div id="view-games" class="view-content active">
         <div class="top-gifts-banner">
-            <div class="gift-mini-card">
-                <img src="https://nft.fragment.com/gift/rose-512.webp" alt="Rose">
-                <span>5.13 GRAM</span>
-            </div>
-            <div class="gift-mini-card">
-                <img src="https://nft.fragment.com/gift/heart-512.webp" alt="Heart">
-                <span>0.33 GRAM</span>
-            </div>
-            <div class="gift-mini-card">
-                <img src="https://nft.fragment.com/gift/sword-512.webp" alt="Sword">
-                <span>6.92 GRAM</span>
-            </div>
-            <div class="gift-mini-card">
-                <img src="https://nft.fragment.com/gift/lollipop-512.webp" alt="Lollipop">
-                <span>4.22 GRAM</span>
-            </div>
-            <div class="gift-mini-card">
-                <img src="https://nft.fragment.com/gift/cat-512.webp" alt="Cat">
-                <span>195 GRAM</span>
-            </div>
-            <div class="gift-mini-card">
-                <img src="https://nft.fragment.com/gift/hat-512.webp" alt="Hat">
-                <span>5.52 GRAM</span>
-            </div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/rose-512.webp"><span>5.13 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/heart-512.webp"><span>0.33 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/sword-512.webp"><span>6.92 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/lollipop-512.webp"><span>4.22 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/cat-512.webp"><span>195 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/hat-512.webp"><span>5.52 GRAM</span></div>
         </div>
 
         <div class="section-title">🔥 Ігри Svatavsex</div>
         <div class="games-grid">
             <div class="game-card" onclick="switchTab('crash')">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Crash">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
                 <span>CRASH</span>
             </div>
             <div class="game-card" onclick="alert('Гра Mines в розробці')">
-                <img src="https://cdn-icons-png.flaticon.com/512/566/566782.png" alt="Mines">
+                <img src="https://cdn-icons-png.flaticon.com/512/566/566782.png">
                 <span>MINES</span>
             </div>
             <div class="game-card" onclick="alert('Гра Cases в розробці')">
-                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313437.png" alt="Cases">
+                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313437.png">
                 <span>CASES</span>
             </div>
             <div class="game-card" onclick="alert('Гра Upgrade в розробці')">
-                <img src="https://cdn-icons-png.flaticon.com/512/2534/2534183.png" alt="Upgrade">
+                <img src="https://cdn-icons-png.flaticon.com/512/2534/2534183.png">
                 <span>UPGRADE</span>
             </div>
         </div>
     </div>
 
-    <!-- VIEW 2: CRASH GAME -->
+    <!-- VIEW: CRASH -->
     <div id="view-crash" class="view-content">
         <div class="crash-container">
             <div class="history-top-bar">
@@ -637,8 +538,8 @@
             </div>
 
             <div class="crash-screen">
-                <div class="crash-status-text" id="crash-status">ВИ МОЖЕТЕ ПОСТАВИТИ СТАВКУ НА НАСТУПНИЙ РАУНД</div>
-                <div class="crash-multiplier" id="crash-mult-val">1.91x</div>
+                <div class="crash-status-text" id="crash-status">ГРА ЧЕРЕЗ 5.0с</div>
+                <div class="crash-multiplier" id="crash-mult-val">1.00x</div>
                 <div class="rocket-flight-graphic">
                     <svg class="rocket-svg-icon" id="rocket-elem" viewBox="0 0 24 24" style="left: 45%; top: 40%;">
                         <path fill="#00ffcc" d="M13.13 2.22l3.6 3.6L19 3.55a2 2 0 0 1 2.83 2.83l-2.27 2.27 3.6 3.6a2 2 0 0 1 0 2.83l-7.07 7.07a2 2 0 0 1-2.83 0l-3.6-3.6-2.27 2.27a2 2 0 0 1-2.83-2.83l3.6-3.6L2.83 8.35a2 2 0 0 1 0-2.83l7.07-7.07a2 2 0 0 1 2.83 0z"/>
@@ -648,14 +549,14 @@
 
             <div class="bet-action-btns">
                 <button class="btn-action-bet" onclick="openDepositModal()">
-                    <img src="https://nft.fragment.com/gift/gift-box-512.webp" alt="gift"> Ставка 🎁
+                    <img src="https://nft.fragment.com/gift/gift-box-512.webp"> Ставка 🎁
                 </button>
                 <button class="btn-action-bet" onclick="openDepositModal()" style="border-color: #ff3366;">
                     💎 Ставка 💎
                 </button>
             </div>
 
-            <div class="live-bets-stream" id="live-stream-box">
+            <div class="live-bets-stream">
                 <div class="live-bet-item">
                     <div class="lbi-user">
                         <div class="lbi-av"></div>
@@ -666,66 +567,48 @@
                     </div>
                     <div class="lbi-right">0.49 GRAM</div>
                 </div>
-                <div class="live-bet-item">
-                    <div class="lbi-user">
-                        <div class="lbi-av"></div>
-                        <div>
-                            <div class="lbi-name">Andrii_TG</div>
-                            <div class="lbi-sub">1.50 GRAM • x3.40</div>
-                        </div>
-                    </div>
-                    <div class="lbi-right">5.10 GRAM</div>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- VIEW 3: INVENTORY (Інвентар) -->
+    <!-- VIEW: INVENTORY -->
     <div id="view-inventory" class="view-content">
         <div class="empty-inventory">
-            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" alt="Empty">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="48" style="opacity:0.5">
             <div>Інвентар порожній</div>
         </div>
     </div>
 
-    <!-- VIEW 4: PVP (PvP) -->
+    <!-- VIEW: PVP -->
     <div id="view-pvp" class="view-content">
-        <div class="empty-inventory">
-            <div>Розділ PvP у розробці</div>
-        </div>
+        <div class="empty-inventory"><div>Розділ PvP у розробці</div></div>
     </div>
 
-    <!-- VIEW 5: LEADERS (Лідери) -->
+    <!-- VIEW: LEADERS -->
     <div id="view-leaders" class="view-content">
-        <div class="empty-inventory">
-            <div>Топ гравців оновлюється</div>
-        </div>
+        <div class="empty-inventory"><div>Топ гравців оновлюється</div></div>
     </div>
 
-    <!-- VIEW 6: PROFILE (Профіль) -->
+    <!-- VIEW: PROFILE -->
     <div id="view-profile" class="view-content">
         <div class="profile-card-box">
             <div class="profile-info-left">
-                <div class="profile-avatar-big">
-                    <img id="prof-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Avatar">
-                </div>
+                <div class="profile-avatar-big"><img id="prof-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100"></div>
                 <div class="profile-text-data">
                     <div class="p-name" id="prof-name">Amy</div>
-                    <div class="p-username" id="prof-username">@svatavsex</div>
+                    <div class="p-username">@svatavsex</div>
                 </div>
             </div>
-            <button class="btn-connect-wallet" onclick="alert('Гаманець підключено')">Підключити</button>
+            <button class="btn-connect-wallet" onclick="alert('Підключено')">Підключити</button>
         </div>
-
         <button class="btn-profile-deposit" onclick="openDepositModal()">Поповнення</button>
-
         <div class="section-title">Реферали</div>
         <div class="referral-box">
             <div>
                 <div style="font-size: 15px; font-weight: 800;">Рівень 1</div>
                 <div style="font-size: 12px; color: #00ffcc; margin-top: 4px; font-weight: 700;">10% від прибутку</div>
             </div>
-            <img src="https://nft.fragment.com/gift/gingerbread-512.webp" alt="Gingerbread">
+            <img src="https://nft.fragment.com/gift/gingerbread-512.webp">
         </div>
     </div>
 
@@ -736,37 +619,31 @@
                 <div class="modal-title">ДЕПОЗИТ</div>
                 <button class="modal-close-btn" onclick="closeDepositModal()">✕</button>
             </div>
-
             <div class="deposit-methods">
-                <div class="dep-meth-tab" onclick="alert('Stars в розробці')">⭐ Stars</div>
-                <div class="dep-meth-tab" onclick="alert('СБП недоступно')">💳 СБП</div>
+                <div class="dep-meth-tab">⭐ Stars</div>
+                <div class="dep-meth-tab">💳 СБП</div>
                 <div class="dep-meth-tab active">💎 GRAM</div>
-                <div class="dep-meth-tab" onclick="alert('Крипто в розробці')">⚡ Крипто</div>
+                <div class="dep-meth-tab">⚡ Крипто</div>
                 <div class="dep-meth-tab active">🎁 Подарунки</div>
             </div>
-
             <div class="dep-desc-box">
                 Надішліть подарунок на акаунт <span>@svatavsex</span> і ми миттєво зарахуємо GRAM на ваш баланс.
             </div>
-
-            <button class="btn-send-gift-bot" onclick="simulateRealGiftDeposit()">
-                🎁 Надіслати подарунки
-            </button>
-
+            <button class="btn-send-gift-bot" onclick="simulateGiftDeposit('IT Gift', 15.00)">🎁 Надіслати подарунки</button>
             <div class="section-title" style="font-size: 13px; margin: 8px 0;">ОРИГІНАЛЬНІ ПОДАРУНКИ FRAGMENT NFT</div>
             <div class="fragment-gifts-grid">
-                <div class="frag-gift-card" onclick="simulateGiftSelect('IT Gift', 15.00, 'https://nft.fragment.com/gift/laptop-512.webp')">
-                    <img src="https://nft.fragment.com/gift/laptop-512.webp" alt="IT">
+                <div class="frag-gift-card" onclick="simulateGiftDeposit('IT Gift', 15.00)">
+                    <img src="https://nft.fragment.com/gift/laptop-512.webp">
                     <div class="fg-name">💻 IT Gift</div>
                     <div class="fg-price">+15.00 GRAM</div>
                 </div>
-                <div class="frag-gift-card" onclick="simulateGiftSelect('Rose', 5.00, 'https://nft.fragment.com/gift/rose-512.webp')">
-                    <img src="https://nft.fragment.com/gift/rose-512.webp" alt="Rose">
+                <div class="frag-gift-card" onclick="simulateGiftDeposit('Rose', 5.00)">
+                    <img src="https://nft.fragment.com/gift/rose-512.webp">
                     <div class="fg-name">🌹 Rose</div>
                     <div class="fg-price">+5.00 GRAM</div>
                 </div>
-                <div class="frag-gift-card" onclick="simulateGiftSelect('Teddy', 10.00, 'https://nft.fragment.com/gift/teddy-512.webp')">
-                    <img src="https://nft.fragment.com/gift/teddy-512.webp" alt="Teddy">
+                <div class="frag-gift-card" onclick="simulateGiftDeposit('Teddy', 10.00)">
+                    <img src="https://nft.fragment.com/gift/teddy-512.webp">
                     <div class="fg-name">🧸 Teddy</div>
                     <div class="fg-price">+10.00 GRAM</div>
                 </div>
@@ -774,7 +651,7 @@
         </div>
     </div>
 
-    <!-- BOTTOM NAV BAR -->
+    <!-- BOTTOM NAV -->
     <div class="bottom-nav">
         <button class="nav-btn" onclick="switchTab('inventory')">
             <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 15H4V8h16v11z"/></svg>
@@ -804,17 +681,11 @@
 
         let userBalance = 0.00;
 
-        // Synchronize Telegram Profile data if available
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             const u = tg.initDataUnsafe.user;
             if (u.first_name) {
                 document.getElementById('header-username').innerText = u.first_name;
                 document.getElementById('prof-name').innerText = u.first_name;
-            }
-            if (u.username) {
-                document.getElementById('prof-username').innerText = '@' + u.username;
-            } else {
-                document.getElementById('prof-username').innerText = '@svatavsex';
             }
             if (u.photo_url) {
                 document.getElementById('header-avatar').src = u.photo_url;
@@ -855,45 +726,32 @@
             document.getElementById('depositModal').style.display = 'none';
         }
 
-        function simulateRealGiftDeposit() {
-            userBalance += 15.00;
-            updateBalanceUI();
-            tg.HapticFeedback.notificationOccurred('success');
-            alert('Подарунок IT Gift успішно зараховано на ваш акаунт @svatavsex! +15.00 GRAM');
-            closeDepositModal();
-        }
-
-        function simulateGiftSelect(name, price, imgUrl) {
+        function simulateGiftDeposit(name, price) {
             userBalance += price;
-            updateBalanceUI();
+            document.getElementById('user-balance-disp').innerText = userBalance.toFixed(2) + ' GRAM';
             tg.HapticFeedback.notificationOccurred('success');
-            alert(`Подарунок [${name}] прийнято від @svatavsex! Баланс поповнено на +${price} GRAM`);
+            alert(`Подарунок [${name}] успішно зараховано на акаунт @svatavsex! +${price} GRAM`);
             closeDepositModal();
         }
 
-        function updateBalanceUI() {
-            document.getElementById('user-balance-disp').innerText = userBalance.toFixed(2) + ' GRAM';
-        }
-
-        // Crash Rocket Flight & 5 seconds round pause simulation
+        // Crash logic with 5s pause & rocket flight
         let mult = 1.00;
-        let isFlightActive = false;
-        let countdownTimer = 5.0;
+        let isFlying = false;
+        let countdown = 5.0;
 
         setInterval(() => {
-            if (!isFlightActive) {
-                countdownTimer -= 0.1;
-                if (countdownTimer <= 0) {
-                    isFlightActive = true;
-                    document.getElementById('crash-status').innerText = "ПОЛІТ РАКЕТИ...";
+            if (!isFlying) {
+                countdown -= 0.1;
+                if (countdown <= 0) {
+                    isFlying = true;
+                    document.getElementById('crash-status').innerText = "ПОЛІТ...";
                 } else {
-                    document.getElementById('crash-status').innerText = `ГРА ЧЕРЕЗ ${countdownTimer.toFixed(1)}с`;
+                    document.getElementById('crash-status').innerText = `ГРА ЧЕРЕЗ ${countdown.toFixed(1)}с`;
                 }
             } else {
                 mult += 0.04;
                 document.getElementById('crash-mult-val').innerText = mult.toFixed(2) + 'x';
                 
-                // Animate rocket position inside container
                 let rocket = document.getElementById('rocket-elem');
                 let posX = 45 + (mult * 3);
                 let posY = 40 - (mult * 4);
@@ -902,11 +760,10 @@
                 rocket.style.left = posX + '%';
                 rocket.style.top = posY + '%';
 
-                if (mult > 7.5) {
-                    isFlightActive = false;
+                if (mult > 7.0) {
+                    isFlying = false;
                     mult = 1.00;
-                    countdownTimer = 5.0;
-                    document.getElementById('crash-status').innerText = "КРАШ! ОЧІКУВАННЯ РАУНДУ";
+                    countdown = 5.0;
                 }
             }
         }, 100);
