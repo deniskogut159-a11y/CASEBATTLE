@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Svatavsex Games</title>
+    <title>Case Battle Eu</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
@@ -94,7 +94,7 @@
             display: block;
         }
 
-        /* Games Home View */
+        /* Top Gifts Banner */
         .top-gifts-banner {
             display: flex;
             gap: 8px;
@@ -114,10 +114,15 @@
             justify-content: center;
             border: 1px solid rgba(255,255,255,0.05);
         }
+        .gift-mini-card img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
         .gift-mini-card span {
-            font-size: 10px;
+            font-size: 9px;
             color: #00ffcc;
-            margin-top: 4px;
+            margin-top: 2px;
             font-weight: 700;
         }
 
@@ -144,12 +149,17 @@
             justify-content: center;
             height: 110px;
         }
+        .game-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
         .game-card span {
             font-size: 13px;
             font-weight: 900;
             letter-spacing: 0.5px;
             color: #fff;
-            margin-top: 8px;
         }
 
         /* Crash Game View */
@@ -188,7 +198,7 @@
         .crash-screen {
             background: radial-gradient(circle at center, #182246 0%, #0a0e1c 100%);
             border-radius: 16px;
-            height: 180px;
+            height: 190px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -199,23 +209,11 @@
             overflow: hidden;
         }
         .crash-multiplier {
-            font-size: 38px;
+            font-size: 40px;
             font-weight: 900;
             color: #fff;
             text-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
-        }
-        .rocket-flight-graphic {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0; left: 0;
-            pointer-events: none;
-        }
-        .rocket-svg-icon {
-            position: absolute;
-            width: 48px;
-            height: 48px;
-            transition: transform 0.1s linear;
+            z-index: 2;
         }
         .crash-status-text {
             font-size: 11px;
@@ -223,6 +221,23 @@
             margin-bottom: 4px;
             font-weight: 700;
             text-transform: uppercase;
+            z-index: 2;
+        }
+        /* Анімована ракета */
+        .rocket-flying-graphic {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .animated-rocket {
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            transition: all 0.1s linear;
+            transform-origin: center;
         }
 
         .bet-action-btns {
@@ -252,7 +267,7 @@
             border-radius: 12px;
             padding: 8px;
             overflow-y: auto;
-            max-height: 130px;
+            max-height: 120px;
             border: 1px solid rgba(255,255,255,0.03);
         }
         .live-bet-item {
@@ -344,6 +359,7 @@
             justify-content: space-between;
             align-items: center;
         }
+        .referral-box img { width: 50px; height: 50px; object-fit: contain; }
 
         /* Deposit Modal */
         .modal-overlay {
@@ -424,13 +440,14 @@
         .frag-gift-card {
             background: #1b2444;
             border-radius: 12px;
-            padding: 12px 10px;
+            padding: 10px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.05);
             cursor: pointer;
         }
-        .frag-gift-card .fg-name { font-size: 11px; font-weight: 700; margin-top: 4px; }
-        .frag-gift-card .fg-price { font-size: 10px; color: #00ffcc; font-weight: 800; margin-top: 2px; }
+        .frag-gift-card img { width: 38px; height: 38px; object-fit: contain; margin-bottom: 4px; }
+        .frag-gift-card .fg-name { font-size: 11px; font-weight: 700; }
+        .frag-gift-card .fg-price { font-size: 10px; color: #00ffcc; font-weight: 800; }
 
         /* Bottom Navigation Bar */
         .bottom-nav {
@@ -464,7 +481,7 @@
                 <img id="header-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100" alt="Avatar">
             </div>
             <div class="user-meta">
-                <div class="u-name" id="header-username">Amy</div>
+                <div class="u-name" id="header-username">Користувач</div>
                 <div class="u-level">Рівень 1</div>
             </div>
         </div>
@@ -477,30 +494,30 @@
     <!-- VIEW: GAMES -->
     <div id="view-games" class="view-content active">
         <div class="top-gifts-banner">
-            <div class="gift-mini-card"><span style="font-size:20px;">🌹</span><span>5.13 GRAM</span></div>
-            <div class="gift-mini-card"><span style="font-size:20px;">❤️</span><span>0.33 GRAM</span></div>
-            <div class="gift-mini-card"><span style="font-size:20px;">⚔️</span><span>6.92 GRAM</span></div>
-            <div class="gift-mini-card"><span style="font-size:20px;">🍭</span><span>4.22 GRAM</span></div>
-            <div class="gift-mini-card"><span style="font-size:20px;">🐱</span><span>195 GRAM</span></div>
-            <div class="gift-mini-card"><span style="font-size:20px;">🎩</span><span>5.52 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://cache.tonkeeper.com/nft/128/vQZ7C9sB3l5bX0z3v4b5n6m7.png" onerror="this.src='https://nft.fragment.com/gift/rose-512.webp'"><span>5.13 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/heart-512.webp"><span>0.33 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/sword-512.webp"><span>6.92 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/lollipop-512.webp"><span>4.22 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/cat-512.webp"><span>195 GRAM</span></div>
+            <div class="gift-mini-card"><img src="https://nft.fragment.com/gift/hat-512.webp"><span>5.52 GRAM</span></div>
         </div>
 
-        <div class="section-title">🔥 Ігри Svatavsex</div>
+        <div class="section-title">🔥 Ігри Case Battle Eu</div>
         <div class="games-grid">
             <div class="game-card" onclick="switchTab('crash')">
-                <span style="font-size: 32px;">🚀</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
                 <span>CRASH</span>
             </div>
             <div class="game-card" onclick="alert('Гра Mines в розробці')">
-                <span style="font-size: 32px;">💣</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/566/566782.png">
                 <span>MINES</span>
             </div>
             <div class="game-card" onclick="alert('Гра Cases в розробці')">
-                <span style="font-size: 32px;">📦</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313437.png">
                 <span>CASES</span>
             </div>
             <div class="game-card" onclick="alert('Гра Upgrade в розробці')">
-                <span style="font-size: 32px;">⚡</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/2534/2534183.png">
                 <span>UPGRADE</span>
             </div>
         </div>
@@ -524,8 +541,9 @@
             <div class="crash-screen">
                 <div class="crash-status-text" id="crash-status">ГРА ЧЕРЕЗ 5.0с</div>
                 <div class="crash-multiplier" id="crash-mult-val">1.00x</div>
+                <!-- Ракета, яка рухається і нахиляється під час польоту -->
                 <div class="rocket-flight-graphic">
-                    <svg class="rocket-svg-icon" id="rocket-elem" viewBox="0 0 24 24" style="left: 45%; top: 40%;">
+                    <svg class="animated-rocket" id="rocket-elem" viewBox="0 0 24 24" style="left: 10%; bottom: 10%; transform: rotate(45deg);">
                         <path fill="#00ffcc" d="M13.13 2.22l3.6 3.6L19 3.55a2 2 0 0 1 2.83 2.83l-2.27 2.27 3.6 3.6a2 2 0 0 1 0 2.83l-7.07 7.07a2 2 0 0 1-2.83 0l-3.6-3.6-2.27 2.27a2 2 0 0 1-2.83-2.83l3.6-3.6L2.83 8.35a2 2 0 0 1 0-2.83l7.07-7.07a2 2 0 0 1 2.83 0z"/>
                     </svg>
                 </div>
@@ -558,7 +576,7 @@
     <!-- VIEW: INVENTORY -->
     <div id="view-inventory" class="view-content">
         <div class="empty-inventory">
-            <span style="font-size: 40px; opacity: 0.5;">🎒</span>
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="48" style="opacity:0.5">
             <div>Інвентар порожній</div>
         </div>
     </div>
@@ -579,8 +597,8 @@
             <div class="profile-info-left">
                 <div class="profile-avatar-big"><img id="prof-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100"></div>
                 <div class="profile-text-data">
-                    <div class="p-name" id="prof-name">Amy</div>
-                    <div class="p-username">@svatavsex</div>
+                    <div class="p-name" id="prof-name">Користувач</div>
+                    <div class="p-username" id="prof-username">@svatavsex</div>
                 </div>
             </div>
             <button class="btn-connect-wallet" onclick="alert('Підключено')">Підключити</button>
@@ -592,7 +610,7 @@
                 <div style="font-size: 15px; font-weight: 800;">Рівень 1</div>
                 <div style="font-size: 12px; color: #00ffcc; margin-top: 4px; font-weight: 700;">10% від прибутку</div>
             </div>
-            <span style="font-size: 32px;">🎁</span>
+            <img src="https://nft.fragment.com/gift/gingerbread-512.webp">
         </div>
     </div>
 
@@ -611,23 +629,23 @@
                 <div class="dep-meth-tab active">🎁 Подарунки</div>
             </div>
             <div class="dep-desc-box">
-                Надішліть подарунок на акаунт <span>@svatavsex</span> і ми миттєво зарахуємо GRAM на ваш баланс.
+                Надішліть подарунок на акаунт <span id="deposit-target-acc">@svatavsex</span> і ми миттєво зарахуємо GRAM на ваш баланс.
             </div>
             <button class="btn-send-gift-bot" onclick="simulateGiftDeposit('IT Gift', 15.00)">🎁 Надіслати подарунки</button>
             <div class="section-title" style="font-size: 13px; margin: 8px 0;">ОРИГІНАЛЬНІ ПОДАРУНКИ FRAGMENT NFT</div>
             <div class="fragment-gifts-grid">
                 <div class="frag-gift-card" onclick="simulateGiftDeposit('IT Gift', 15.00)">
-                    <div style="font-size: 28px;">💻</div>
+                    <img src="https://nft.fragment.com/gift/laptop-512.webp">
                     <div class="fg-name">IT Gift</div>
                     <div class="fg-price">+15.00 GRAM</div>
                 </div>
                 <div class="frag-gift-card" onclick="simulateGiftDeposit('Rose', 5.00)">
-                    <div style="font-size: 28px;">🌹</div>
+                    <img src="https://nft.fragment.com/gift/rose-512.webp">
                     <div class="fg-name">Rose</div>
                     <div class="fg-price">+5.00 GRAM</div>
                 </div>
                 <div class="frag-gift-card" onclick="simulateGiftDeposit('Teddy', 10.00)">
-                    <div style="font-size: 28px;">🧸</div>
+                    <img src="https://nft.fragment.com/gift/teddy-512.webp">
                     <div class="fg-name">Teddy</div>
                     <div class="fg-price">+10.00 GRAM</div>
                 </div>
@@ -665,11 +683,19 @@
 
         let userBalance = 0.00;
 
+        // Підтягування реальних даних користувача з Telegram
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             const u = tg.initDataUnsafe.user;
             if (u.first_name) {
                 document.getElementById('header-username').innerText = u.first_name;
                 document.getElementById('prof-name').innerText = u.first_name;
+            }
+            if (u.username) {
+                const handle = '@' + u.username;
+                document.getElementById('prof-username').innerText = handle;
+                document.getElementById('deposit-target-acc').innerText = handle;
+            } else {
+                document.getElementById('prof-username').innerText = '@svatavsex';
             }
             if (u.photo_url) {
                 document.getElementById('header-avatar').src = u.photo_url;
@@ -714,10 +740,11 @@
             userBalance += price;
             document.getElementById('user-balance-disp').innerText = userBalance.toFixed(2) + ' GRAM';
             tg.HapticFeedback.notificationOccurred('success');
-            alert(`Подарунок [${name}] успішно зараховано на акаунт @svatavsex! +${price} GRAM`);
+            alert(`Подарунок [${name}] успішно зараховано! +${price} GRAM`);
             closeDepositModal();
         }
 
+        // Плавна логіка польоту й нахилу ракети для Crash
         let mult = 1.00;
         let isFlying = false;
         let countdown = 5.0;
@@ -736,12 +763,17 @@
                 document.getElementById('crash-mult-val').innerText = mult.toFixed(2) + 'x';
                 
                 let rocket = document.getElementById('rocket-elem');
-                let posX = 45 + (mult * 3);
-                let posY = 40 - (mult * 4);
-                if (posX > 80) posX = 80;
-                if (posY < 10) posY = 10;
+                let progress = (mult - 1.0) / 6.0; 
+                if (progress > 1) progress = 1;
+
+                let posX = 10 + (progress * 70);
+                let posY = 10 + (progress * 65);
+                // Нахил ракети під час польоту по кривій
+                let angle = 45 - (progress * 25);
+
                 rocket.style.left = posX + '%';
-                rocket.style.top = posY + '%';
+                rocket.style.bottom = posY + '%';
+                rocket.style.transform = `rotate(${angle}deg)`;
 
                 if (mult > 7.0) {
                     isFlying = false;
